@@ -17,6 +17,18 @@ function pageBanner($args = NULL) {
         $args['photo'] = get_theme_file_uri('/images/ocean.jpg');
       }
     }
+?>
+    <div class="page-banner">
+      <div class="page-banner__bg-image" style="background-image: url(<?php echo $args['photo'] ?>)"></div>
+      <div class="page-banner__content container container--narrow">
+        <h1 class="page-banner__title"> <?php echo $args['title'] ?> </h1>
+        <div class="page-banner__intro">
+          <p> <?php echo $args['subtitle'] ?> </p>
+        </div>
+      </div>
+    </div>
+
+<?php }
 
 //this is the function being called in 'add_action''
 //this function works similar to a HTML <head> tag where all >link> and <script>
