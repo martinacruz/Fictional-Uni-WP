@@ -1,5 +1,16 @@
 <?php
 
+//create/set custom properties that we receive in JSON returned from WP
+//adding authors name
+function university_custom_rest() {
+  //takes 3 arguments (post type, given name,  array)
+  register_rest_field('post', 'authorName', array(
+    'get_callback' => function() {return get_the_author();}
+  ));
+}
+
+add_action('rest_api_init', 'university_custom_rest');
+
 function pageBanner($args = NULL) {
   
     if (!$args['title']) {
@@ -41,6 +52,10 @@ function university_files() {
     wp_enqueue_style('font-awesome', "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
     wp_enqueue_style('university_main_styles', get_theme_file_uri('/build/style-index.css'));
     wp_enqueue_style('university_extra_styles', get_theme_file_uri('/build/index.css'));
+
+    wp_localize_script('main-university-js', 'universityData', array(
+      'root_url' => get_site_url()
+    ));
 };
 
 // this function takes two arguments
