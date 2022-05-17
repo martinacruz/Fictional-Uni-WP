@@ -1,5 +1,7 @@
 <?php
 
+require get_theme_file_path('/inc/search-route.php');
+
 //create/set custom properties that we receive in JSON returned from WP
 //adding authors name
 function university_custom_rest() {
